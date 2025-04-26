@@ -10,5 +10,11 @@ SafeLink is a Python Program that helps consumers/coorporate by examine the safe
 
 ## Prerequisites:
 - [Python](https://www.python.org/downloads/)
-- Required dependencies, can be installed by entering the command "pip install -r requirements.txt"
+- Required dependencies 
+    - Can be installed by entering the command '''pip install -r requirements.txt'''
 - [VirusTotal API Key](https://docs.virustotal.com/docs/please-give-me-an-api-key)
+
+## How to use?
+1. Download the project onto your computer
+    - You can download the project with git by entering the command:
+    '''git clone https://github.com/clementtech/SafeLink.git'''
