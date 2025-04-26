@@ -1,12 +1,20 @@
 import vt
 import os
+import sys
 from dotenv import load_dotenv
 from tabulate import tabulate
 
 load_dotenv()
-API_KEY = os.getenv("API_KEY")
-client = vt.Client(API_KEY)
+try:
+    API_KEY = os.getenv("API_KEY")
+    client = vt.Client(API_KEY)
 
+except ValueError:
+    sys.exit("Please setup your API key in the .env file.")
+
+except ModuleNotFoundError:
+    sys.exit("Please install the required modules using 'pip install -r requirements.txt'.")
+    
 URL_TO_SCAN = str(input("URL: "))
 
 url_scan = client.scan_url(URL_TO_SCAN)
