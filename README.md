@@ -6,4 +6,4 @@ SafeLink is a Python Program that helps consumers/coorporate by examine the safe
 ![alt text](image.png)
 
 #### When Malicious URL is provided:
-![alt text](image-1.png)
+![Screenshot](https://raw.githubusercontent.com/clementtech/SafeLink/refs/heads/main/assets/malicious_link_result.png)
