@@ -10,11 +10,6 @@ SafeLink is a Python Program that helps consumers/coorporate by examine the safe
 
 ## Prerequisites:
 - [Python](https://www.python.org/downloads/)
-- Required dependencies 
-    - Can be installed by entering the following command after downloaded the project:
-    ```
-    pip install -r requirements.txt
-    ```
 - [VirusTotal API Key](https://docs.virustotal.com/docs/please-give-me-an-api-key)
 
 ## How to use?
@@ -22,4 +17,27 @@ SafeLink is a Python Program that helps consumers/coorporate by examine the safe
     - You can download the project with git by entering the command:
     ```
     git clone https://github.com/clementtech/SafeLink.git
+    ```
+
+2. Create an empty file with the name ".env" to store the VirusTotal API key
+    - You can create the empty file in the same directory by using the following command:
+    ```
+    code .env
+    ```
+    - After creating the file, please enter your API key inside the ".env" file.
+      Example:
+      ```
+      API_KEY = "Your API Key"
+      ```
+
+3. Download the required dependencies 
+    - The dependencies can be installed by entering the following command:
+    ```
+    pip install -r requirements.txt
+    ```
+
+4. Done setup!
+    - You can run the program by entering the following command:
+    ```
+    python main.py
     ```
