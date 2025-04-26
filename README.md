@@ -17,6 +17,6 @@ SafeLink is a Python Program that helps consumers/coorporate by examine the safe
 ## How to use?
 1. Download the project onto your computer
     - You can download the project with git by entering the command:
-    '''
+    ```
     git clone https://github.com/clementtech/SafeLink.git
-    '''
+    ```
