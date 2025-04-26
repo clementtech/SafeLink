@@ -1,5 +1,5 @@
 # SafeLink
-SafeLink is a Python Program that helps consumers/coorporate by examine the safetyness of the link to prevent phishing with the help of VirusTotal API.
+SafeLink is a Python program that helps consumers and corporations by examining the safety of links to prevent phishing, with the help of the VirusTotal API.
 
 ### Sneak Peek:
 #### When Safe URL is provided:
