@@ -1,8 +1,6 @@
 # SafeLink
 SafeLink is a Python program that helps consumers and corporations by examining the safety of links to prevent phishing, with the help of the VirusTotal API.
 
-This is just a proof of concept for a larger project I'm working on! 😃
-
 ### This Project now integrates with Google Gemini AI!
 ![gemini](https://s.yimg.com/ny/api/res/1.2/CKSDxCR76Wlcg35wWO_61A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MA--/https://s.yimg.com/os/creatr-uploaded-images/2023-12/5f7be670-943f-11ee-af7f-41b7060d20ba)
 
