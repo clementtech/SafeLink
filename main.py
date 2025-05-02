@@ -26,7 +26,7 @@ try:
     # The .env file should contain a line like "API_KEY=your_api_key_here"
     # If the API key is not set, a ValueError will be raised
     API_KEY_VT = os.getenv("API_KEY_VT")
-    client = vt.Client(API_KEY_VT)
+    client_vt = vt.Client(API_KEY_VT)
 
 # If the API key is not set, exit the program with an error message
 except ValueError:
@@ -42,7 +42,7 @@ URL_TO_SCAN = str(input("URL: "))
 
 # The URL is scanned using the VirusTotal API client
 # The scan_url method sends the URL to VirusTotal for analysis
-url_scan = client.scan_url(URL_TO_SCAN)
+url_scan = client_vt.scan_url(URL_TO_SCAN)
 
 # The scan_url method returns a URL object that contains information about the scan
 # The URL object contains various attributes, including the scan ID and the analysis results
@@ -57,7 +57,7 @@ URL_ID = vt.url_id(URL_TO_SCAN)
 # The total votes contain the number of votes from the community for the URL
 # The last analysis results and total votes are used to determine the safety of the URL
 # The last analysis results contain the results from various antivirus vendors
-url_report = client.get_object(f"/urls/{URL_ID}")
+url_report = client_vt.get_object(f"/urls/{URL_ID}")
 
 # Calculate the number of malicious and harmless results from corporate antivirus vendors
 # The last_analysis_results attribute contains the results from various antivirus vendors
@@ -122,4 +122,4 @@ elif malicious_count_community == 0 and harmless_count_community == 0:
 
 # close the VirusTotal client connection
 # This is important to free up resources and avoid memory leaks    
-client.close()
+client_vt.close()
