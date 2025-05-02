@@ -4,20 +4,22 @@
 # sys is used to exit the program if an error occurs
 # dotenv is used to load environment variables from a .env file
 # tabulate is used to create a table for displaying results
-import vt
+
 import os
 import sys
-from dotenv import load_dotenv
-from tabulate import tabulate
 
-# Load environment variables from .env file
-# This file should contain the API key for VirusTotal
-load_dotenv()
 
 # Check if the required modules are installed and if the API key is set
 # If not, exit the program with an error message
 try:
 
+    import vt
+    from dotenv import load_dotenv
+    from tabulate import tabulate
+
+    # Load environment variables from .env file
+    # This file should contain the API key for VirusTotal
+    load_dotenv()
     # Get the API key from the environment variable
     # The API key should be stored in a .env file in the same directory as this script
     # The .env file should contain a line like "API_KEY=your_api_key_here"
