@@ -26,7 +26,11 @@ try:
     # The .env file should contain a line like "API_KEY=your_api_key_here"
     # If the API key is not set, a ValueError will be raised
     API_KEY_VT = os.getenv("API_KEY_VT")
+    API_KEY_Google = os.getenv("API_KEY_Google")
     client_vt = vt.Client(API_KEY_VT)
+    client_google = genai.Client(api_key = API_KEY_Google)
+
+ 
 
 # If the API key is not set, exit the program with an error message
 except ValueError:
@@ -123,3 +127,10 @@ elif malicious_count_community == 0 and harmless_count_community == 0:
 # close the VirusTotal client connection
 # This is important to free up resources and avoid memory leaks    
 client_vt.close()
+
+# response = client_google.models.generate_content(
+#     model="gemini-2.0-flash",
+#     contents="Explain how AI works in a few words",
+# )
+
+# print(response.text)
