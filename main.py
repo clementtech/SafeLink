@@ -16,6 +16,7 @@ try:
     import vt
     from dotenv import load_dotenv
     from tabulate import tabulate
+    from google import genai
 
     # Load environment variables from .env file
     # This file should contain the API key for VirusTotal
@@ -24,8 +25,8 @@ try:
     # The API key should be stored in a .env file in the same directory as this script
     # The .env file should contain a line like "API_KEY=your_api_key_here"
     # If the API key is not set, a ValueError will be raised
-    API_KEY = os.getenv("API_KEY")
-    client = vt.Client(API_KEY)
+    API_KEY_VT = os.getenv("API_KEY_VT")
+    client = vt.Client(API_KEY_VT)
 
 # If the API key is not set, exit the program with an error message
 except ValueError:
