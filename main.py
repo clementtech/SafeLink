@@ -67,18 +67,9 @@ url_report = client_vt.get_object(f"/urls/{URL_ID}")
 # The last_analysis_results attribute contains the results from various antivirus vendors
 # Each vendor's result contains a category that indicates whether the URL is malicious or harmless
 # The category is used to count the number of malicious and harmless results from corporate antivirus vendors
-malicious_count_corporate = sum(1 for vendor in url_report.last_analysis_results.values() if vendor['category'] == 'malicious')
-harmless_count_corporate = sum(1 for vendor in url_report.last_analysis_results.values() if vendor['category'] == 'harmless')
+malicious_count = sum(1 for vendor in url_report.last_analysis_results.values() if vendor['category'] == 'malicious')
+harmless_count = sum(1 for vendor in url_report.last_analysis_results.values() if vendor['category'] == 'harmless')
 
-# Calculate the number of malicious and harmless results from the community
-# The total_votes attribute contains the number of votes from the community for the URL
-# The total_votes attribute contains two keys: "harmless" and "malicious"
-# The values of these keys are used to count the number of malicious and harmless results from the community
-# The total_votes attribute is used to determine the safety of the URL based on community votes
-# The total_votes attribute contains the number of votes from the community for the URL
-community_score = url_report.total_votes
-harmless_count_community = community_score["harmless"]
-malicious_count_community = community_score["malicious"]
 
 # Print the results in a table format using the tabulate library
 # The tabulate library is used to create a table for displaying the results
@@ -92,45 +83,22 @@ malicious_count_community = community_score["malicious"]
 # The Harmless is changed to Safe for better layman understanding
 table = [
     ["Link Summary Result", "Malicious", "Safe"],
-    ["Corporate AV Results", malicious_count_corporate, harmless_count_corporate],
-    ["Community Votes", malicious_count_community, harmless_count_community]
+    ["Results", malicious_count, harmless_count]
 ]
 
 print("\n") 
-print(tabulate(table, headers="firstrow", tablefmt="presto"))
-print("\n")
-
-# If the number of malicious results from corporate antivirus vendors is greater than 0, the URL is considered malicious
-# Of course, false positives can happen, so the user is advised to proceed with caution
-if malicious_count_corporate > 0:
-    print("This URL is flagged as malicious! Please do not proceed unless you are sure it is safe.")
-
-# If the number of malicious results from corporate antivirus vendors is 0 and the number of harmless results is greater than 0, the URL is considered safe
-# However, the user is advised to proceed with caution as false negatives can happen
-elif malicious_count_corporate == 0 and harmless_count_corporate > 0:
-    print("This URL is considered safe by our partners, however please proceed with caution.")
+result = tabulate(table, headers="firstrow", tablefmt="presto")
+print(result)
 
 print("\n")
 
-# If the number of malicious results from the community is greater than the number of harmless results, the URL is considered dangerous
-# However, community votes are not always accurate, so the user is advised to proceed with caution
-if malicious_count_community > harmless_count_community:
-    print("The community considers this URL is dangerous! Please do not proceed unless you are sure it is safe.")
-    print("However, please note that the community votes are not always accurate.")
+response = client_google.models.generate_content(
+    model="gemini-2.0-flash",
+    contents=f"You are a cybersecurity expert. Based on the following data, If malicious > 1 = malicious. Please provide a short explanation of {result}, do not mention the rules."
+)
 
-# If the URL does not have any community votes, the user is advised to proceed with caution
-# As the URL might be new or not widely known, scammers often use new URLs to avoid detection
-elif malicious_count_community == 0 and harmless_count_community == 0:
-    print("This URL has no community votes. It might be new or not widely known.")
-    print("Scammers often use new URLs to avoid detection.")
+print(response.text)
 
 # close the VirusTotal client connection
 # This is important to free up resources and avoid memory leaks    
 client_vt.close()
-
-# response = client_google.models.generate_content(
-#     model="gemini-2.0-flash",
-#     contents="Explain how AI works in a few words",
-# )
-
-# print(response.text)
