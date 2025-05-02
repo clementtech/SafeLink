@@ -43,3 +43,8 @@ This is just a proof of concept for a larger project I'm working on! 😃
     ```
     python main.py
     ```
+
+# Future Improvements:
+- Integration with Artificial Intelligence to provide better detection of phishing links
+- Chrome extension to provide real-time detection of phishing links
+- Android and iOS app to provide real-time detection of phishing links
